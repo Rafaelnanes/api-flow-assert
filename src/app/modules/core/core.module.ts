@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
-
-import { NavBarComponent, MainComponent } from './components/index';
+import { CoreRoutingModule } from './core-routing.module'
+import { NavBarComponent, MainComponent, PageNotFoundComponent } from './components/index';
 
 @NgModule({
   imports: [
+    CoreRoutingModule
   ],
   declarations: [
     NavBarComponent,
-    MainComponent
+    MainComponent,
+    PageNotFoundComponent
   ],
   exports: [
-    NavBarComponent,
-    MainComponent
+    NavBarComponent
   ],
   providers: [
 
