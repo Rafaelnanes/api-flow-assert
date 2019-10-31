@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pro-main',
+  selector: 'afa-main',
   templateUrl: './main.component.html',
   styles: []
 })

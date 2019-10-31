@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MainComponent, PageNotFoundComponent } from './components/index';
+import {
+    MainComponent,
+    PageNotFoundComponent,
+    ExecutionComponent,
+    FlowComponent,
+    CollectionComponent
+} from './components/index';
 
 const appRoutes: Routes = [
     {
@@ -11,19 +17,15 @@ const appRoutes: Routes = [
     },
     {
         path: 'execution',
-        component: MainComponent
+        component: ExecutionComponent
     },
     {
         path: 'flow',
-        component: MainComponent
+        component: FlowComponent
     },
     {
         path: 'collection',
-        component: MainComponent
-    },
-    {
-        path: 'request',
-        component: MainComponent
+        component: CollectionComponent
     },
     {
         path: '',
