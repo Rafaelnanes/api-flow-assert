@@ -4,10 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
     MainComponent,
-    PageNotFoundComponent,
-    ExecutionComponent,
-    FlowComponent,
-    CollectionComponent
+    PageNotFoundComponent
 } from './components/index';
 
 const appRoutes: Routes = [
@@ -17,15 +14,15 @@ const appRoutes: Routes = [
     },
     {
         path: 'execution',
-        component: ExecutionComponent
+        loadChildren: 'modules/execution/execution.module#ExecutionModule'
     },
     {
         path: 'flow',
-        component: FlowComponent
+        loadChildren: 'modules/flow/flow.module#FlowModule'
     },
     {
         path: 'collection',
-        component: CollectionComponent
+        loadChildren: 'modules/collection/collection.module#CollectionModule'
     },
     {
         path: '',

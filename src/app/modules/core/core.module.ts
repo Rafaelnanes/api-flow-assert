@@ -4,10 +4,7 @@ import { CoreRoutingModule } from './core-routing.module'
 import {
   NavBarComponent,
   MainComponent,
-  PageNotFoundComponent,
-  FlowComponent,
-  ExecutionComponent,
-  CollectionComponent
+  PageNotFoundComponent
 } from './components/index';
 
 @NgModule({
@@ -18,10 +15,7 @@ import {
   declarations: [
     NavBarComponent,
     MainComponent,
-    PageNotFoundComponent,
-    ExecutionComponent,
-    FlowComponent,
-    CollectionComponent
+    PageNotFoundComponent
   ],
   exports: [
     NavBarComponent
