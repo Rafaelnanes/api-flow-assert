@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+.k-treeview .k-in.k-state-selected {
+    background-color: rgb(87, 132, 223);
+    border-radius: 5px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

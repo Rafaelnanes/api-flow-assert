@@ -1,4 +1,12 @@
-<div class="jumbotron">
-    <h1>Collection-group</h1>
-    <p>This is the collection component.</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <kendo-treeview [nodes]="colletionGroups" textField="id" kendoTreeViewExpandable kendoTreeViewSelectable
+                kendoTreeViewHierarchyBinding (selectionChange)="handleSelection($event)" childrenField="requests">
+            </kendo-treeview>
+        </div>
+        <div class="col-md-8">
+            <afa-request *ngIf="requestSelected" [request]="requestSelected"></afa-request>
+        </div>
+    </div>
 </div>

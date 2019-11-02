@@ -11,7 +11,10 @@
 
 ### Collections
 #### Add request to group
-#### Crud request
+### Request
+#### Add tree and then send it to new request route to edit the request and run it to test
+#### Add input samples { id : '1', inputSample: [ { id: 'sample1', body: { blablabla}}]}
+    
 
 
 ## Tips
