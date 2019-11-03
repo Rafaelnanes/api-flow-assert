@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionGroup, Request } from '../../model';
+import { CollectionGroup, Request } from '../../../shared';
 import { CollectionService } from '../../service';
 
 @Component({

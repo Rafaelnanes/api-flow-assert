@@ -6,8 +6,7 @@ import { CoreModule } from './modules/core/core.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { HttpRequestService } from './modules/shared';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TreeViewModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    HttpRequestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

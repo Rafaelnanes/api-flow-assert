@@ -6,6 +6,7 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { CollectionRoutingModule } from './collection-routing.module';
 import { CollectionMainComponent } from './components/collection-main/collection-main.component';
 import { RequestComponent } from './components/request/request.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,8 @@ import { RequestComponent } from './components/request/request.component';
     RouterModule,
     TreeViewModule,
     ReactiveFormsModule
+  ],
+  providers: [
   ]
 })
 export class CollectionModule { }

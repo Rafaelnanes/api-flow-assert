@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, ViewChild, OnChanges, EventEmitter } from '@angular/core';
-import { Request } from '../../model';
+import { Request } from '../../../shared';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { KeyPair } from '../../../shared';
-
+import { KeyPair, HttpRequestService } from '../../../shared';
 
 @Component({
   selector: 'afa-request',
@@ -18,9 +17,11 @@ export class RequestComponent implements OnInit {
 
   public myForm: FormGroup;
 
-  private formArrayHeaders: FormArray
+  public methodForm: FormControl;
 
-  constructor() { }
+  private formArrayHeaders: FormArray;
+
+  constructor(private httpRequestService: HttpRequestService) { }
 
   ngOnInit() {
     this.createForm();
@@ -28,14 +29,17 @@ export class RequestComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.requestOrigin = new Request(this.request.id, this.request.method, this.request.url, this.request.body, this.request.header);
+    this.requestOrigin = new Request(this.request.id, this.request.method, this.request.url, this.request.body, this.request.headers);
     if (this.myForm) {
       this.createForm();
     }
   }
 
   public onSubmit(): void {
-    console.log(this.myForm);
+    let id = this.request.id;
+    this.request = this.myForm.value as Request;
+    this.request.id = id;
+    this.httpRequestService.createRequest(this.request);
   }
 
   public onAddHeader(): void {
@@ -49,9 +53,10 @@ export class RequestComponent implements OnInit {
 
   private createForm() {
     this.createFormHeaders();
+    this.methodForm = new FormControl(this.request.method, Validators.required);
 
     this.myForm = new FormGroup({
-      'method': new FormControl(this.request.method, Validators.required),
+      'method': this.methodForm,
       'url': new FormControl(this.request.url, Validators.required),
       'body': new FormControl(this.request.body, Validators.required),
       'headers': this.formArrayHeaders
@@ -61,8 +66,8 @@ export class RequestComponent implements OnInit {
 
   private createFormHeaders() {
     this.formArrayHeaders = new FormArray([]);
-    if (this.request.header) {
-      for (let header of this.request.header) {
+    if (this.request.headers) {
+      for (let header of this.request.headers) {
         let formGroup = this.createFormGroupHeader(header);
         this.formArrayHeaders.push(formGroup);
       }

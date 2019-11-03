@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" *ngIf="methodForm.value != 'GET'">
         <label for="body">Body</label>
         <textarea class="form-control" rows="10" formControlName="body"></textarea>
     </div>
