@@ -9,12 +9,11 @@
 
 ### Module
 
-### Collections
-#### Add request to group
 ### Request
-#### Add tree and then send it to new request route to edit the request and run it to test
-#### Add input samples { id : '1', inputSample: [ { id: 'sample1', body: { blablabla}}]}
-    
+#### Reset form when clicking in another request
+#### Add panel view like postman
+#### Add circle to flag that the request has changed
+#### Add flexible body - Json And Parameters
 
 
 ## Tips

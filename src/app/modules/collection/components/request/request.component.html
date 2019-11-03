@@ -1,1 +1,33 @@
-{{request.id}}
+<div class="page-header" style="padding:10px">
+    <h4>-- {{request.id}} --</h4>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="method">Method</label>
+        <select class="form-control" id="method" formControlName="method">
+            <option>GET</option>
+            <option>POST</option>
+            <option>PUT</option>
+            <option>DELETE</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="url">Url</label>
+        <input type="text" class="form-control" id="url" formControlName="url">
+    </div>
+
+    <div class="form-group" formArrayName="headers">
+        <label for="header">Header</label>
+        <button class="btn btn-default" type="button" (click)="onAddHeader()">+</button>
+        <div class="form-group" *ngFor="let headerControl of formArrayHeaders.controls; let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="body">Body</label>
+        <textarea class="form-control" rows="10" formControlName="body"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Run</button>
+</form>

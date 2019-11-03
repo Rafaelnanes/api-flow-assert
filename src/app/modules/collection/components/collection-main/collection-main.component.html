@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <kendo-treeview [nodes]="colletionGroups" textField="id" kendoTreeViewExpandable kendoTreeViewSelectable
                 kendoTreeViewHierarchyBinding (selectionChange)="handleSelection($event)" childrenField="requests">
             </kendo-treeview>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <afa-request *ngIf="requestSelected" [request]="requestSelected"></afa-request>
         </div>
     </div>
