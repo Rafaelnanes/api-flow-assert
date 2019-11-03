@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Request } from '../model/index';
+import { Request } from '../model';
+import { KeyPair } from '../../shared';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,10 @@ export class RequestService {
 
   constructor() {
     this.requests = [
-      new Request("request-id-1", 'POST', 'anyUrl1', 'anyBody1', ['anyHeader1']),
+      new Request("request-id-1", 'POST', 'anyUrl1', 'anyBody1', [new KeyPair('key1', 'value1')]),
       new Request("request-id-2", 'GET', 'anyUrl2', 'anyBody2', null),
-      new Request("request-id-3", 'PUT', 'anyUrl3', 'anyBody3', ['anyHeader3']),
-      new Request("request-id-4", 'DELETE', 'anyUrl4', 'anyBody4', ['anyHeader4'])
+      new Request("request-id-3", 'PUT', 'anyUrl3', 'anyBody3', [new KeyPair('key3', 'value3')]),
+      new Request("request-id-4", 'DELETE', 'anyUrl4', 'anyBody4', [new KeyPair('key4', 'value4')])
     ];
   }
 

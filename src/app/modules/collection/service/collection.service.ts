@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CollectionGroup, Request } from '../model/index';
+import { CollectionGroup, Request } from '../model';
 import { RequestService } from './request.service';
 
 @Injectable({

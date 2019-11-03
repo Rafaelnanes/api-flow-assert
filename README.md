@@ -2,15 +2,14 @@
 
 ## TODO
 ### use cookies
-### check route link active
 
 ### Main
 #### Create import Json
 
-### Module
+### Execution
+#### Make use to observables when requesting
 
 ### Request
-#### Reset form when clicking in another request
 #### Add panel view like postman
 #### Add circle to flag that the request has changed
 #### Add flexible body - Json And Parameters

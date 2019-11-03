@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionGroup, Request } from '../../model/index';
-import { CollectionService } from '../../service/index';
+import { CollectionGroup, Request } from '../../model';
+import { CollectionService } from '../../service';
 
 @Component({
   selector: 'afa-collection-main',

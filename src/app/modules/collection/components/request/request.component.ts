@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewChild, OnChanges, EventEmitter } from '@angular/core';
-import { Request } from '../../model/index';
+import { Request } from '../../model';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { KeyPair } from '../../../shared';
+
 
 @Component({
   selector: 'afa-request',
@@ -37,8 +39,12 @@ export class RequestComponent implements OnInit {
   }
 
   public onAddHeader(): void {
-    const control = new FormControl(null, Validators.required);
-    this.formArrayHeaders.push(control);
+    const formGroup = this.createFormGroupHeader(new KeyPair('', ''));
+    this.formArrayHeaders.push(formGroup);
+  }
+
+  public onRemoveHeader(index: number): void {
+    this.formArrayHeaders.removeAt(index);
   }
 
   private createForm() {
@@ -57,10 +63,18 @@ export class RequestComponent implements OnInit {
     this.formArrayHeaders = new FormArray([]);
     if (this.request.header) {
       for (let header of this.request.header) {
-        this.formArrayHeaders.push(new FormControl(header, Validators.required));
+        let formGroup = this.createFormGroupHeader(header);
+        this.formArrayHeaders.push(formGroup);
       }
     }
     return this.formArrayHeaders;
+  }
+
+  private createFormGroupHeader(header: KeyPair) {
+    return new FormGroup({
+      'key': new FormControl(header.key, Validators.required),
+      'value': new FormControl(header.value, Validators.required)
+    });
   }
 
   private formatBodyOnChange() {

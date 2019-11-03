@@ -17,10 +17,29 @@
     </div>
 
     <div class="form-group" formArrayName="headers">
-        <label for="header">Header</label>
-        <button class="btn btn-default" type="button" (click)="onAddHeader()">+</button>
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                <label for="header">Header</label>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-info" type="button" (click)="onAddHeader()"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="col-sm-9">
+            </div>
+        </div>
         <div class="form-group" *ngFor="let headerControl of formArrayHeaders.controls; let i = index">
-            <input type="text" class="form-control" [formControlName]="i">
+            <div [formGroupName]="i" class="form-group row">
+                <div class="col-sm-5">
+                    <input formControlName="key" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <input formControlName="value" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-danger" type="button" (click)="onRemoveHeader(i)"><i
+                            class="fa fa-remove"></i></button>
+                </div>
+            </div>
         </div>
     </div>
 

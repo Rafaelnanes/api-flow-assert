@@ -5,7 +5,7 @@ import {
   NavBarComponent,
   MainComponent,
   PageNotFoundComponent
-} from './components/index';
+} from './components';
 
 @NgModule({
   imports: [
