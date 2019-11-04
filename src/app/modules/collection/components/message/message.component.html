@@ -1,0 +1,12 @@
+<div class="card border-secondary mb-3">
+    <div class="card-header bg-transparent border-secondary">
+        <h4 class="card-title">{{message.request.id}}</h4>
+    </div>
+    <div class="card-body text-secondary" *ngIf="message.request">
+        <afa-request [message]="message"></afa-request>
+    </div>
+
+    <div class="card-footer bg-transparent border-secondary" *ngIf="message.response">
+        <afa-response [response]="message.response"></afa-response>
+    </div>
+</div>

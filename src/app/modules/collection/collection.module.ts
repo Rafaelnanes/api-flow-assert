@@ -4,14 +4,19 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { CollectionRoutingModule } from './collection-routing.module';
-import { CollectionMainComponent } from './components/collection-main/collection-main.component';
-import { RequestComponent } from './components/request/request.component';
-import { SharedModule } from '../shared/shared.module';
+import {
+  CollectionMainComponent,
+  RequestComponent,
+  MessageComponent,
+  ResponseComponent
+} from './components/index';
 
 @NgModule({
   declarations: [
     CollectionMainComponent,
-    RequestComponent
+    RequestComponent,
+    MessageComponent,
+    ResponseComponent
   ],
   imports: [
     CommonModule,

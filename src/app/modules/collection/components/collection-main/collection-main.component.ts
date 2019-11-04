@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionGroup, Request } from '../../../shared';
+import { CollectionGroup, Request, Message } from '../../../shared';
 import { CollectionService } from '../../service';
 
 @Component({
@@ -10,11 +10,11 @@ import { CollectionService } from '../../service';
 export class CollectionMainComponent implements OnInit {
 
   public colletionGroups: CollectionGroup[];
-  public requestSelected: Request;
+  public messageSelected: Message;
 
   constructor(collectionService: CollectionService) {
     this.colletionGroups = collectionService.getAll();
-    this.requestSelected = this.colletionGroups[0].requests[0];
+    this.messageSelected = new Message(this.colletionGroups[0].requests[0]);
   }
 
   ngOnInit() {
@@ -25,7 +25,8 @@ export class CollectionMainComponent implements OnInit {
     const stringSplitted = index.split("_");
     let collectionIndex = stringSplitted[0];
     let requestIndex = stringSplitted[1];
-    this.requestSelected = this.colletionGroups[collectionIndex].requests[requestIndex];
+    let requestSelected = this.colletionGroups[collectionIndex].requests[requestIndex];
+    this.messageSelected = new Message(requestSelected);
   }
 
 

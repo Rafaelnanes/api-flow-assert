@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Request } from '../model';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Request, Response } from '../model';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -19,21 +21,29 @@ export class HttpRequestService {
     public createRequest(request: Request) {
         let headers = this.parseHeaders(request);
         let body = request.body ? request.body : {};
+        let response: Observable<HttpResponse<any>>;
         if (request.method === 'GET') {
 
-            this.httpClient.get(request.url, headers)
-                .subscribe(response => console.log(response));
+            response = this.httpClient.get(request.url, { headers: headers, observe: 'response' });
 
         } else if (request.method === 'POST') {
 
-            this.httpClient.post(request.url, body, headers)
-                .subscribe(response => console.log(response));
+            response = this.httpClient.post(request.url, body, { headers: headers, observe: 'response' });
 
         } else if (request.method === 'PUT') {
 
         } else {
 
         }
+
+        return response.pipe(
+            map(response => {
+                return new Response(response.ok, response.status, JSON.stringify(response.body, null, 2));
+            }),
+            catchError(response => {
+                return of(new Response(response.ok, response.status, JSON.stringify(response.error, null, 2)));
+            })
+        );
     }
 
     private parseHeaders(request: Request): any {
@@ -41,7 +51,7 @@ export class HttpRequestService {
         for (let header of request.headers) {
             headers = headers.set(header.key, header.value);
         }
-        return { headers: headers };
+        return headers;
     }
 
 }

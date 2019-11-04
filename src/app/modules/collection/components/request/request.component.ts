@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, OnChanges, EventEmitter } from '@angular/core';
-import { Request } from '../../../shared';
+import { Request, Message, Response } from '../../../shared';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { KeyPair, HttpRequestService } from '../../../shared';
 
@@ -11,6 +11,8 @@ import { KeyPair, HttpRequestService } from '../../../shared';
 export class RequestComponent implements OnInit {
 
   @Input()
+  public message: Message;
+
   public request: Request;
 
   public requestOrigin: Request;
@@ -24,11 +26,13 @@ export class RequestComponent implements OnInit {
   constructor(private httpRequestService: HttpRequestService) { }
 
   ngOnInit() {
+    this.request = this.message.request;
     this.createForm();
     this.formatBodyOnChange();
   }
 
   ngOnChanges() {
+    this.request = this.message.request;
     this.requestOrigin = new Request(this.request.id, this.request.method, this.request.url, this.request.body, this.request.headers);
     if (this.myForm) {
       this.createForm();
@@ -39,7 +43,9 @@ export class RequestComponent implements OnInit {
     let id = this.request.id;
     this.request = this.myForm.value as Request;
     this.request.id = id;
-    this.httpRequestService.createRequest(this.request);
+    this.httpRequestService.createRequest(this.request).subscribe(response => {
+      this.message.response = response;
+    });
   }
 
   public onAddHeader(): void {
