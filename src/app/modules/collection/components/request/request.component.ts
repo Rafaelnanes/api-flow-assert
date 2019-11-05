@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, ViewChild, OnChanges, EventEmitter } from '@angular/core';
-import { Request, Message, Response } from '../../../shared';
+import { Component, OnInit, Input } from '@angular/core';
+import { Request, Message, KeyPair, HttpRequestService } from '../../../shared';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { KeyPair, HttpRequestService } from '../../../shared';
 
 @Component({
   selector: 'afa-request',
@@ -96,7 +95,9 @@ export class RequestComponent implements OnInit {
           this.myForm.get('body').setValue(formattedValue);
         }
       }
-      catch (e) { }
+      catch (e) {
+        // do nothing
+      }
     });
   }
 

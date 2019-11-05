@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CollectionGroup } from '../../shared';
+import { CollectionGroup } from '../model/collection-group';
 import { RequestService } from './request.service';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ export class CollectionService {
 
   constructor(requestService: RequestService) {
     this.colletionGroups = [
-      new CollectionGroup("collection1", requestService.getAll())
+      new CollectionGroup("collection1"),
+      new CollectionGroup("collection2"),
     ];
   }
 
@@ -34,7 +36,7 @@ export class CollectionService {
     }
   }
 
-  public getAll(): CollectionGroup[] {
-    return this.colletionGroups;
+  public getAll(): Observable<CollectionGroup[]> {
+    return of(this.colletionGroups);
   }
 }

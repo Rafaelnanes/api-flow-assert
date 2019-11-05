@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Request, KeyPair } from '../../shared';
+import { Request, KeyPair } from '../model';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +37,7 @@ export class RequestService {
     }
   }
 
-  public getAll(): Request[] {
-    return this.requests;
+  public getAll(): Observable<Request[]> {
+    return of(this.requests);
   }
 }

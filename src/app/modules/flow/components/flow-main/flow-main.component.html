@@ -1,4 +1,13 @@
 <div class="jumbotron">
-    <h1>Flow-main</h1>
-    <p>This is the flow component.</p>
+    <div class="list-group">
+        <!-- onClick active class -->
+        <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let flow of flows">
+            <div class="d-flex w-50 justify-content-between">
+                <h5 class="mb-1">{{flow.name}}</h5>
+                <small routerLink="/flow/{{flow.id}}"><i class="fa fa-edit"></i></small>
+                <small (click)="onDelete(flow.id)"><i class="fa fa-trash"></i></small>
+            </div>
+            <p class="mb-1">{{flow.description}}</p>
+        </a>
+    </div>
 </div>

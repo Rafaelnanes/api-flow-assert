@@ -1,24 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionGroup, Request, Message } from '../../../shared';
-import { CollectionService } from '../../service';
+import { CollectionGroup, Message, CollectionService, RequestService } from '../../../shared';
 
 @Component({
   selector: 'afa-collection-main',
   templateUrl: './collection-main.component.html',
   styleUrls: []
 })
-export class CollectionMainComponent implements OnInit {
+export class CollectionMainComponent {
 
   public colletionGroups: CollectionGroup[];
   public messageSelected: Message;
 
-  constructor(collectionService: CollectionService) {
-    this.colletionGroups = collectionService.getAll();
-    this.messageSelected = new Message(this.colletionGroups[0].requests[0]);
-  }
+  constructor(collectionService: CollectionService, requestService: RequestService) {
+    collectionService.getAll().subscribe(x => {
 
-  ngOnInit() {
+      this.colletionGroups = x;
 
+      if (this.colletionGroups) {
+        requestService.getAll().subscribe(y => {
+          this.colletionGroups[0].requests = y.slice(0, 2);
+          this.colletionGroups[1].requests = y.slice(2, 4);
+          this.messageSelected = new Message(this.colletionGroups[0].requests[0]);
+        });
+      }
+
+    });
   }
 
   public handleSelection({ index }: any): void {

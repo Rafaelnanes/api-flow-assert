@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FlowMainComponent } from './components';
+import { FlowMainComponent, FlowComponent } from './components';
 
 const appRoutes: Routes = [
   {
     path: '', component: FlowMainComponent
+  },
+  {
+    path: ':id', component: FlowComponent
   }
 ];
 
