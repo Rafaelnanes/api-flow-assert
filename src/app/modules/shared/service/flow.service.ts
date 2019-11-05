@@ -43,13 +43,13 @@ export class FlowService {
   public getById(id: string): Observable<Flow> {
     return Observable.create((subscriber: Subscriber<Flow>) => {
       for (let flow of this.flows) {
-        if (flow.id === id) {
+        if (flow.id == id) {
           subscriber.next(flow);
           subscriber.complete();
           return;
         }
-        subscriber.error(new Error('Flow was not found'))
       }
+      subscriber.error(new Error('Flow was not found'))
     }
 
     )

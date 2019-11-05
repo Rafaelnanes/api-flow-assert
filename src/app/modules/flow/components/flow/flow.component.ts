@@ -12,10 +12,11 @@ export class FlowComponent {
   public flow: Flow;
 
   constructor(private route: ActivatedRoute, private flowService: FlowService) {
+    this.flow = new Flow("", "", "", null);
     route.params.subscribe((params: Params) => {
 
       const newLocal = params['id'];
-      flowService.getById(newLocal).subscribe(x => console.log("Flow => ", x))
+      flowService.getById(newLocal).subscribe(x => this.flow = x);
     })
   }
 
