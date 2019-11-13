@@ -3,6 +3,7 @@
 ## TODO
 ### use cookies
 ### loading bar
+### use client-storage https://blog.logrocket.com/cache-invalidation-strategies-using-indexeddb-in-angular-2/
 
 ### Main
 #### Create import Json
