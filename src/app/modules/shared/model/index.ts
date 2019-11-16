@@ -6,3 +6,4 @@ export * from './response';
 export * from './flow';
 export * from './step';
 export * from './assertion';
+export * from './folder';

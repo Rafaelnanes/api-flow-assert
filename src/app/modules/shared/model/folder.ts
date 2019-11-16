@@ -1,5 +1,5 @@
-import { Request, Folder } from './..';
+import { Request } from '..';
 
-export class CollectionGroup {
+export class Folder {
     constructor(public id: string, public requests?: Request[], public folders?: Folder[]) { }
 }

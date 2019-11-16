@@ -5,9 +5,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-                        <kendo-treeview [nodes]="colletionGroups" textField="id" kendoTreeViewExpandable
-                            kendoTreeViewSelectable kendoTreeViewHierarchyBinding
-                            (selectionChange)="handleSelection($event)" childrenField="requests">
+                        <kendo-treeview [nodes]="nodes" textField="id" kendoTreeViewExpandable kendoTreeViewSelectable
+                            kendoTreeViewHierarchyBinding (selectionChange)="handleSelection($event)"
+                            childrenField="children">
                         </kendo-treeview>
                     </div>
                     <div class="col-md-9">

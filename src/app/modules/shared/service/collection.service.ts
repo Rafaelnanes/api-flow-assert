@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CollectionGroup } from '../model/collection-group';
 import { RequestService } from './request.service';
 import { of, Observable } from 'rxjs';
+import { Folder } from '../model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class CollectionService {
   constructor(requestService: RequestService) {
     this.colletionGroups = [
       new CollectionGroup("collection1"),
-      new CollectionGroup("collection2"),
+      new CollectionGroup("collection2", null, [new Folder('folder1', null, null)])
     ];
   }
 
