@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { CollectionRoutingModule } from './collection-routing.module';
+
 import {
-  CollectionMainComponent,
   RequestComponent,
   MessageComponent,
-  ResponseComponent
-} from './components/index';
+  ResponseComponent,
+  CollectionMainComponent
+} from './components';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,8 @@ import {
     CommonModule,
     CollectionRoutingModule,
     RouterModule,
-    TreeViewModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
   ]

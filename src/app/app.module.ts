@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from './modules/core/core.module';
 import { SharedModule } from './modules/shared/shared.module';
-import { TreeViewModule } from '@progress/kendo-angular-treeview';
+import { CoreModule } from './modules/core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpRequestService, RequestService, CollectionService } from './modules/shared';
 
@@ -14,9 +13,8 @@ import { HttpRequestService, RequestService, CollectionService } from './modules
   ],
   imports: [
     RouterModule,
-    CoreModule,
     SharedModule,
-    TreeViewModule,
+    CoreModule,
     BrowserAnimationsModule
   ],
   providers: [

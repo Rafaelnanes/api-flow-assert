@@ -20,5 +20,8 @@ export class FlowComponent {
     })
   }
 
+  public onMessageSelected(messageSelected: any): void {
+  }
+
 
 }

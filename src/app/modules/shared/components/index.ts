@@ -1,0 +1,1 @@
+export * from './collection-tree/collection-tree.component';
