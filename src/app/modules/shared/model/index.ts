@@ -5,5 +5,5 @@ export * from './request';
 export * from './response';
 export * from './flow';
 export * from './step';
-export * from './assertion';
+export * from './assert';
 export * from './folder';

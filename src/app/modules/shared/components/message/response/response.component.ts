@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Response } from '../../../shared';
+import { Response } from '../../../';
 
 @Component({
   selector: 'afa-response',

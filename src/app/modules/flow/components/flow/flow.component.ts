@@ -10,7 +10,8 @@ import { Flow, FlowService, Message, Step } from '../../../shared';
 export class FlowComponent {
 
   public flow: Flow;
-  public stepSelected: number = 0;
+  public stepSelectedIndex: number = 0;
+  public stepSelected: Step = null;
 
   constructor(private route: ActivatedRoute, private flowService: FlowService) {
     this.flow = new Flow("", "", null);
@@ -25,12 +26,10 @@ export class FlowComponent {
     this.flow.steps.push(new Step(name, message));
   }
 
-  public onUpdateStep(step: Step): void {
-    for (let i = 0; i < this.flow.steps.length; i++) {
-      if (this.flow.steps[i].name === step.name) {
-        this.stepSelected = i;
-      }
-    }
+  public onStepEdit(index: number): void {
+    this.stepSelectedIndex = index;
+    this.stepSelected = this.flow.steps[index];
+    console.log(this.stepSelected)
   }
 
 }

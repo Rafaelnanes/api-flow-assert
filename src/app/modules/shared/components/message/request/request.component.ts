@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Request, Message, KeyPair, HttpRequestService } from '../../../shared';
+import { Request, Message, KeyPair } from '../../../model';
+import { HttpRequestService } from '../../../service';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({

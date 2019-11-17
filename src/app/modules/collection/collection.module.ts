@@ -5,19 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CollectionRoutingModule } from './collection-routing.module';
 
 import {
-  RequestComponent,
-  MessageComponent,
-  ResponseComponent,
   CollectionMainComponent
 } from './components';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    CollectionMainComponent,
-    RequestComponent,
-    MessageComponent,
-    ResponseComponent
+    CollectionMainComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   providers: [
+  ],
+  exports: [
   ]
 })
 export class CollectionModule { }
