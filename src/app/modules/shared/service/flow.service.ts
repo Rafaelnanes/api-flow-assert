@@ -12,8 +12,8 @@ export class FlowService {
   constructor() {
     let step1 =
       this.flows = [
-        new Flow("flow-id-1", 'Nome Flow 1', "Any description for 1", [new Step("step 1 - 1"), new Step("step 1 - 2")]),
-        new Flow("flow-id-2", 'Nome Flow 2', "Any description for 2", [new Step("step 2 - 1")])
+        new Flow("flow-id-1", "Any description for 1", [new Step("any"), new Step("uau")]),
+        new Flow("flow-id-2", "Any description for 2", [new Step("alow")])
       ];
   }
 

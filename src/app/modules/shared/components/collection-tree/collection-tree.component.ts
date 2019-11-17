@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CollectionGroup, Message, Request } from '../../model';
 import { CollectionService, RequestService } from '../../service';
 
@@ -9,7 +9,10 @@ import { CollectionService, RequestService } from '../../service';
 })
 export class CollectionTreeComponent {
 
+  @Input() enablePlusButton: Boolean;
   @Output() onMessageSelected: EventEmitter<Message> = new EventEmitter();
+  @Output() onAddButton: EventEmitter<Message> = new EventEmitter();
+
   public colletionGroups: CollectionGroup[];
   public nodes: Node[] = [];
 
@@ -35,6 +38,10 @@ export class CollectionTreeComponent {
 
       });
 
+  }
+
+  public handleAddButton(message: Message): void {
+    this.onAddButton.emit(message);
   }
 
   public handleSelection({ index }: any): void {
@@ -69,14 +76,14 @@ export class CollectionTreeComponent {
         for (let folder of collection.folders) {
           let requestsFromFolder: Node[] = [];
           for (let request of folder.requests) {
-            requestsFromFolder.push(new Node(request.id, 'fa-play-circle-o'));
+            requestsFromFolder.push(new Node(request.id, 'fa-play-circle-o', null, new Message(request)));
           }
           childrenNodes.push(new Node(folder.id, 'fa-folder', requestsFromFolder));
         }
       }
       if (collection.requests) {
         for (let request of collection.requests) {
-          childrenNodes.push(new Node(request.id, 'fa-play-circle-o'));
+          childrenNodes.push(new Node(request.id, 'fa-play-circle-o', null, new Message(request)));
         }
       }
       this.nodes.push(new Node(collection.id, 'fa-object-group', childrenNodes));
@@ -86,5 +93,5 @@ export class CollectionTreeComponent {
 }
 
 class Node {
-  constructor(public id: string, public icon: string, public children?: Node[]) { }
+  constructor(public id: string, public icon: string, public children?: Node[], public message?: Message) { }
 }

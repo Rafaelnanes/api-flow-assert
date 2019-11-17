@@ -1,11 +1,24 @@
 <div class="jumbotron">
+    <h1 class="display-4">{{flow.id}}</h1>
+    <p class="lead">{{flow.description}}</p>
+    <hr class="my-4">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <afa-step></afa-step>
+            <div class="col-md-9">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="list-group w-100 p-3">
+                            <li [ngClass]="{'list-group-item list-group-item-action' : true , 'active' : stepSelected == i}"
+                                *ngFor="let step of flow.steps; let i = index">
+                                <afa-step [step]="step" (onUpdate)="onUpdateStep($event)"></afa-step>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <afa-collection-tree></afa-collection-tree>
+            <div class="col-md-3">
+                <afa-collection-tree (onAddButton)="onAddStep($event)" [enablePlusButton]="true">
+                </afa-collection-tree>
             </div>
         </div>
     </div>
