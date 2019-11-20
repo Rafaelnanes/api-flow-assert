@@ -7,3 +7,4 @@ export * from './flow';
 export * from './step';
 export * from './assert';
 export * from './folder';
+export * from './assert-strategy';
